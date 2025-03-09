@@ -1,0 +1,38 @@
+source,target,value
+Africa,Deforestation,1635.7363753208
+Africa,Fires,517.818229339367
+Africa,Organic Soil,0.29612293326
+Africa,Other Land,119.67952743768
+Asia-Pacific Developed,Deforestation,42.745176074507
+Asia-Pacific Developed,Fires,280.620044990295
+Asia-Pacific Developed,Organic Soil,3.1222771885779
+Eastern Asia,Deforestation,3.40289
+Eastern Asia,Fires,5.99509788859613
+Eurasia,Deforestation,18.334716888753
+Eurasia,Fires,109.49187667074389
+Eurasia,Organic Soil,133.3984889528
+Europe,Deforestation,39.00750978296
+Europe,Fires,15.52091842183462
+Europe,Organic Soil,120.39778783527
+Latin America and Caribbean,Deforestation,1276.792179617
+Latin America and Caribbean,Fires,109.23741576964301
+Middle East,Deforestation,81.3748
+Middle East,Fires,0.38748573994076496
+North America,Deforestation,131.91709899705
+North America,Fires,90.7678768214749
+North America,Organic Soil,43.515657027734
+South-East Asia and developing Pacific,Deforestation,630.860028
+South-East Asia and developing Pacific,Fires,29.4057086550122
+South-East Asia and developing Pacific,Forest Land,668.65571847908
+South-East Asia and developing Pacific,Organic Soil,856.32428
+South-East Asia and developing Pacific,Other Land,3.422
+Southern Asia,Deforestation,17.647566
+Southern Asia,Fires,14.8255253751075
+Southern Asia,Forest Land,1280.8696284128
+Deforestation,CO2,3877.8183406810704
+Fires,CH4,398.00206210860273
+Fires,CO2,635.7794510569499
+Fires,N2O,140.2886665064623
+Forest Land,CO2,1949.52534689188
+Organic Soil,CO2,1157.054613937642
+Other Land,CO2,74.545487683254

@@ -1,0 +1,241 @@
+id,name,year,pm_value
+BGD,Bangladesh,2000-01-01,47.84
+IND,India,2000-01-01,33.52
+NPL,Nepal,2000-01-01,34.89
+QAT,Qatar,2000-01-01,25.5
+PAK,Pakistan,2000-01-01,29.81
+COD,Democratic Republic of the Congo,2000-01-01,32.43
+BDI,Burundi,2000-01-01,32.59
+RWA,Rwanda,2000-01-01,33.65
+GNQ,Equatorial Guinea,2000-01-01,25.11
+CMR,Cameroon,2000-01-01,30.07
+BGD,Bangladesh,2001-01-01,49.83
+IND,India,2001-01-01,37.0
+NPL,Nepal,2001-01-01,39.72
+QAT,Qatar,2001-01-01,21.66
+PAK,Pakistan,2001-01-01,31.83
+COD,Democratic Republic of the Congo,2001-01-01,36.39
+BDI,Burundi,2001-01-01,40.56
+RWA,Rwanda,2001-01-01,39.65
+GNQ,Equatorial Guinea,2001-01-01,26.21
+CMR,Cameroon,2001-01-01,32.29
+BGD,Bangladesh,2002-01-01,50.05
+IND,India,2002-01-01,37.11
+NPL,Nepal,2002-01-01,35.64
+QAT,Qatar,2002-01-01,25.25
+PAK,Pakistan,2002-01-01,31.77
+COD,Democratic Republic of the Congo,2002-01-01,36.15
+BDI,Burundi,2002-01-01,34.68
+RWA,Rwanda,2002-01-01,34.67
+GNQ,Equatorial Guinea,2002-01-01,25.5
+CMR,Cameroon,2002-01-01,31.5
+BGD,Bangladesh,2003-01-01,51.42
+IND,India,2003-01-01,40.07
+NPL,Nepal,2003-01-01,36.66
+QAT,Qatar,2003-01-01,21.46
+PAK,Pakistan,2003-01-01,33.31
+COD,Democratic Republic of the Congo,2003-01-01,33.65
+BDI,Burundi,2003-01-01,31.82
+RWA,Rwanda,2003-01-01,29.79
+GNQ,Equatorial Guinea,2003-01-01,25.3
+CMR,Cameroon,2003-01-01,30.76
+BGD,Bangladesh,2004-01-01,51.02
+IND,India,2004-01-01,39.9
+NPL,Nepal,2004-01-01,39.18
+QAT,Qatar,2004-01-01,21.64
+PAK,Pakistan,2004-01-01,32.74
+COD,Democratic Republic of the Congo,2004-01-01,35.56
+BDI,Burundi,2004-01-01,36.5
+RWA,Rwanda,2004-01-01,36.16
+GNQ,Equatorial Guinea,2004-01-01,27.08
+CMR,Cameroon,2004-01-01,32.46
+BGD,Bangladesh,2005-01-01,55.98
+IND,India,2005-01-01,40.77
+NPL,Nepal,2005-01-01,37.47
+QAT,Qatar,2005-01-01,22.51
+PAK,Pakistan,2005-01-01,35.31
+COD,Democratic Republic of the Congo,2005-01-01,36.34
+BDI,Burundi,2005-01-01,37.57
+RWA,Rwanda,2005-01-01,36.35
+GNQ,Equatorial Guinea,2005-01-01,23.74
+CMR,Cameroon,2005-01-01,31.74
+BGD,Bangladesh,2006-01-01,59.72
+IND,India,2006-01-01,42.49
+NPL,Nepal,2006-01-01,42.77
+QAT,Qatar,2006-01-01,26.97
+PAK,Pakistan,2006-01-01,38.32
+COD,Democratic Republic of the Congo,2006-01-01,30.57
+BDI,Burundi,2006-01-01,31.22
+RWA,Rwanda,2006-01-01,30.76
+GNQ,Equatorial Guinea,2006-01-01,21.35
+CMR,Cameroon,2006-01-01,29.68
+BGD,Bangladesh,2007-01-01,57.84
+IND,India,2007-01-01,44.23
+NPL,Nepal,2007-01-01,43.37
+QAT,Qatar,2007-01-01,26.01
+PAK,Pakistan,2007-01-01,38.66
+COD,Democratic Republic of the Congo,2007-01-01,33.12
+BDI,Burundi,2007-01-01,40.69
+RWA,Rwanda,2007-01-01,40.17
+GNQ,Equatorial Guinea,2007-01-01,26.13
+CMR,Cameroon,2007-01-01,31.04
+BGD,Bangladesh,2008-01-01,60.77
+IND,India,2008-01-01,47.83
+NPL,Nepal,2008-01-01,45.02
+QAT,Qatar,2008-01-01,29.34
+PAK,Pakistan,2008-01-01,36.63
+COD,Democratic Republic of the Congo,2008-01-01,35.34
+BDI,Burundi,2008-01-01,38.62
+RWA,Rwanda,2008-01-01,37.77
+GNQ,Equatorial Guinea,2008-01-01,29.15
+CMR,Cameroon,2008-01-01,33.89
+BGD,Bangladesh,2009-01-01,67.18
+IND,India,2009-01-01,47.39
+NPL,Nepal,2009-01-01,49.19
+QAT,Qatar,2009-01-01,32.05
+PAK,Pakistan,2009-01-01,36.16
+COD,Democratic Republic of the Congo,2009-01-01,34.72
+BDI,Burundi,2009-01-01,35.11
+RWA,Rwanda,2009-01-01,34.29
+GNQ,Equatorial Guinea,2009-01-01,26.78
+CMR,Cameroon,2009-01-01,32.2
+BGD,Bangladesh,2010-01-01,64.0
+IND,India,2010-01-01,47.57
+NPL,Nepal,2010-01-01,42.34
+QAT,Qatar,2010-01-01,33.4
+PAK,Pakistan,2010-01-01,41.85
+COD,Democratic Republic of the Congo,2010-01-01,38.31
+BDI,Burundi,2010-01-01,38.25
+RWA,Rwanda,2010-01-01,37.42
+GNQ,Equatorial Guinea,2010-01-01,28.64
+CMR,Cameroon,2010-01-01,33.66
+BGD,Bangladesh,2011-01-01,65.35
+IND,India,2011-01-01,50.48
+NPL,Nepal,2011-01-01,44.47
+QAT,Qatar,2011-01-01,31.25
+PAK,Pakistan,2011-01-01,40.41
+COD,Democratic Republic of the Congo,2011-01-01,35.61
+BDI,Burundi,2011-01-01,38.62
+RWA,Rwanda,2011-01-01,37.79
+GNQ,Equatorial Guinea,2011-01-01,27.64
+CMR,Cameroon,2011-01-01,32.09
+BGD,Bangladesh,2012-01-01,67.78
+IND,India,2012-01-01,46.38
+NPL,Nepal,2012-01-01,43.84
+QAT,Qatar,2012-01-01,33.97
+PAK,Pakistan,2012-01-01,36.86
+COD,Democratic Republic of the Congo,2012-01-01,37.88
+BDI,Burundi,2012-01-01,37.93
+RWA,Rwanda,2012-01-01,37.11
+GNQ,Equatorial Guinea,2012-01-01,28.21
+CMR,Cameroon,2012-01-01,32.73
+BGD,Bangladesh,2012-01-01,67.78
+IND,India,2012-01-01,46.38
+NPL,Nepal,2012-01-01,43.84
+QAT,Qatar,2012-01-01,33.97
+PAK,Pakistan,2012-01-01,36.86
+COD,Democratic Republic of the Congo,2012-01-01,37.88
+BDI,Burundi,2012-01-01,37.93
+RWA,Rwanda,2012-01-01,37.11
+GNQ,Equatorial Guinea,2012-01-01,28.21
+CMR,Cameroon,2012-01-01,32.73
+BGD,Bangladesh,2013-01-01,61.62
+IND,India,2013-01-01,47.58
+NPL,Nepal,2013-01-01,41.54
+QAT,Qatar,2013-01-01,30.31
+PAK,Pakistan,2013-01-01,38.94
+COD,Democratic Republic of the Congo,2013-01-01,39.17
+BDI,Burundi,2013-01-01,38.9
+RWA,Rwanda,2013-01-01,37.79
+GNQ,Equatorial Guinea,2013-01-01,30.76
+CMR,Cameroon,2013-01-01,32.88
+BGD,Bangladesh,2014-01-01,64.93
+IND,India,2014-01-01,46.56
+NPL,Nepal,2014-01-01,41.99
+QAT,Qatar,2014-01-01,32.51
+PAK,Pakistan,2014-01-01,38.31
+COD,Democratic Republic of the Congo,2014-01-01,34.71
+BDI,Burundi,2014-01-01,34.47
+RWA,Rwanda,2014-01-01,33.56
+GNQ,Equatorial Guinea,2014-01-01,27.42
+CMR,Cameroon,2014-01-01,30.95
+BGD,Bangladesh,2015-01-01,62.0
+IND,India,2015-01-01,46.55
+NPL,Nepal,2015-01-01,44.17
+QAT,Qatar,2015-01-01,31.73
+PAK,Pakistan,2015-01-01,42.24
+COD,Democratic Republic of the Congo,2015-01-01,37.51
+BDI,Burundi,2015-01-01,37.0
+RWA,Rwanda,2015-01-01,35.92
+GNQ,Equatorial Guinea,2015-01-01,29.33
+CMR,Cameroon,2015-01-01,30.65
+BGD,Bangladesh,2016-01-01,61.4
+IND,India,2016-01-01,49.77
+NPL,Nepal,2016-01-01,44.7
+QAT,Qatar,2016-01-01,32.96
+PAK,Pakistan,2016-01-01,40.55
+COD,Democratic Republic of the Congo,2016-01-01,35.18
+BDI,Burundi,2016-01-01,36.69
+RWA,Rwanda,2016-01-01,36.18
+GNQ,Equatorial Guinea,2016-01-01,31.57
+CMR,Cameroon,2016-01-01,33.46
+BGD,Bangladesh,2017-01-01,60.19
+IND,India,2017-01-01,49.88
+NPL,Nepal,2017-01-01,44.35
+QAT,Qatar,2017-01-01,35.44
+PAK,Pakistan,2017-01-01,39.91
+COD,Democratic Republic of the Congo,2017-01-01,31.18
+BDI,Burundi,2017-01-01,30.72
+RWA,Rwanda,2017-01-01,30.66
+GNQ,Equatorial Guinea,2017-01-01,29.54
+CMR,Cameroon,2017-01-01,34.05
+BGD,Bangladesh,2018-01-01,74.51
+IND,India,2018-01-01,50.15
+NPL,Nepal,2018-01-01,48.81
+QAT,Qatar,2018-01-01,33.93
+PAK,Pakistan,2018-01-01,39.36
+COD,Democratic Republic of the Congo,2018-01-01,32.02
+BDI,Burundi,2018-01-01,29.99
+RWA,Rwanda,2018-01-01,29.64
+GNQ,Equatorial Guinea,2018-01-01,28.56
+CMR,Cameroon,2018-01-01,33.62
+BGD,Bangladesh,2019-01-01,63.35
+IND,India,2019-01-01,49.2
+NPL,Nepal,2019-01-01,45.46
+QAT,Qatar,2019-01-01,35.64
+PAK,Pakistan,2019-01-01,40.62
+COD,Democratic Republic of the Congo,2019-01-01,35.36
+BDI,Burundi,2019-01-01,37.8
+RWA,Rwanda,2019-01-01,37.86
+GNQ,Equatorial Guinea,2019-01-01,29.31
+CMR,Cameroon,2019-01-01,32.39
+BGD,Bangladesh,2020-01-01,69.3
+IND,India,2020-01-01,48.82
+NPL,Nepal,2020-01-01,43.36
+QAT,Qatar,2020-01-01,30.94
+PAK,Pakistan,2020-01-01,42.84
+COD,Democratic Republic of the Congo,2020-01-01,34.92
+BDI,Burundi,2020-01-01,35.85
+RWA,Rwanda,2020-01-01,36.01
+GNQ,Equatorial Guinea,2020-01-01,31.31
+CMR,Cameroon,2020-01-01,33.4
+BGD,Bangladesh,2021-01-01,69.74
+IND,India,2021-01-01,51.3
+NPL,Nepal,2021-01-01,47.93
+QAT,Qatar,2021-01-01,32.84
+PAK,Pakistan,2021-01-01,43.17
+COD,Democratic Republic of the Congo,2021-01-01,35.04
+BDI,Burundi,2021-01-01,34.65
+RWA,Rwanda,2021-01-01,34.47
+GNQ,Equatorial Guinea,2021-01-01,31.6
+CMR,Cameroon,2021-01-01,33.08
+BGD,Bangladesh,2022-01-01,54.17
+IND,India,2022-01-01,41.39
+NPL,Nepal,2022-01-01,39.18
+QAT,Qatar,2022-01-01,39.16
+PAK,Pakistan,2022-01-01,38.9
+COD,Democratic Republic of the Congo,2022-01-01,34.71
+BDI,Burundi,2022-01-01,34.04
+RWA,Rwanda,2022-01-01,33.37
+GNQ,Equatorial Guinea,2022-01-01,32.87
+CMR,Cameroon,2022-01-01,32.58
