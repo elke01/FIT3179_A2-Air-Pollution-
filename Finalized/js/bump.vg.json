@@ -1,0 +1,116 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 300,
+    "width": 475,
+    "title": {
+      "text": "2.5PM Concentration Ranking",
+      "subtitle": "Data calculated in million tons of CO2 equivalent",
+      "frame": "bounds",
+      "align": "center",
+      "fontSize": 20,
+      "font": "Arial",
+      "subtitleFontSize": 14
+    },
+    "data": {
+      "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/Top10PMConcentration.csv",
+      "format": { "type": "csv" }
+    },
+    "transform": [
+      {
+        "sort": [
+          { "field": "pm_value", "order": "descending" }
+        ],
+        "window": [
+          {
+            "op": "rank",
+            "as": "rank"
+          }
+        ],
+        "groupby": ["year"]
+      },
+      {
+        "filter": "datum.rank <= 10"
+      },
+      {
+        "calculate": "datum.id === 'COD' ? 'DR Congo' : datum.name",
+        "as": "name"
+      }
+    ],
+    "layer": [
+      {
+        "mark": { "type": "line", "orient": "vertical", "strokeWidth": 2.5 },
+        "params": [{
+            "name": "rankSelection",
+            "select": {"type": "point", "fields": ["name"], "on": "click"},
+            "bind": "legend"
+        }],
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "ordinal",
+            "timeUnit": "year",
+            "axis": {
+              "format": "%Y",
+              "title": "Year",
+              "labelAngle": -45,
+              "labelFontSize": 13,
+              "titleFontSize": 15
+            }
+          },
+          "y": {
+            "field": "rank",
+            "type": "ordinal",
+            "axis": {
+              "title": "Rank",
+              "labelFontSize": 13,
+              "titleFontSize": 15
+            }
+          },
+          "color": {
+            "field": "name",
+            "type": "nominal",
+            "scale": {
+              "range": [
+                "#6699CC", "#FF9966", "#FF99CC", "#99CCCC", "#66CC99",
+                "#e33d3d", "#9966CC", "#FFCCCC", "#ac5f1c", "#6f6f6f"
+              ]
+            },
+            "legend": {
+              "title": "Country",
+              "labelFontSize": 13,
+              "titleFontSize": 14
+            }
+          },
+          "opacity": {
+            "condition": {"param": "rankSelection", "value": 1},
+            "value": 0.2}
+        }
+      },
+      {
+        "mark": { "type": "point", "filled": true, "size": 40 },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "ordinal",
+            "timeUnit": "year",
+            "axis": { "format": "%Y" }
+          },
+          "y": { "field": "rank", "type": "ordinal" },
+          "color": {
+            "field": "name",
+            "type": "nominal"
+          },
+          "opacity": {
+                "condition": {"param": "rankSelection", "value": 1},
+                "value": 0.2},
+          "tooltip": [
+            { "field": "name", "type": "nominal", "title": "Country" },
+            { "field": "year", "type": "temporal", "title": "Year", "format": "%Y"},
+            { "field": "rank", "type": "ordinal", "title": "Rank" },
+            { "field": "pm_value", "type": "quantitative", "title": "PM Value (µg/m³)" }
+          ]
+        }
+      }
+    ]
+  }
+  

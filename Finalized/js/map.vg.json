@@ -1,0 +1,583 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "autosize": {"resize": true},
+  "background": "transparent",
+  "data": {
+      "url":
+      "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/ne_110m_admin_0_countries.topojson",
+      "format": {"type": "topojson", "feature":"ne_110m_admin_0_countries"}
+      },
+  "vconcat": [
+      {
+        "title": {
+          "text": "Global 2.5PM (µg/m³) Concentration in 2022",
+          "fontSize": 17,
+          "font": "Arial"
+        },
+          "width": 800,
+          "height": 400,
+          "projection": {"type": "equalEarth"
+                      },
+          "layer": [
+              {
+                  "data": {"sphere": true},
+                  "mark": {"type": "geoshape", "fill":"#daf2ff", "stroke": null}
+              },
+              {
+                  "data": {
+                  "graticule": {"step": [30, 30]}
+                  },
+                  "mark": {"type": "geoshape", "stroke": "lightgray", "strokeWidth": 0.5}
+              },
+              {
+                  "mark": {"type": "geoshape", "fill": "#a7a7a7", "stroke":"white"},
+                  "transform": [
+                      {
+                        "calculate": "'Data is not available in ' + datum.properties.NAME",
+                        "as": "note"
+                      }
+                    ],
+                  "encoding": {"tooltip": {"field": "note"}}
+              },
+                  
+              {
+                  "transform": [
+                    {
+                      "lookup": "properties.GU_A3",
+                      "from": {
+                        "data": {
+                          "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/2.5PMfileRankedCoordinate.csv"
+                        },
+                        "key": "id",
+                        "fields": ["pm2022", "name", "id"]
+                      }
+                    }
+                  ],
+                  "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.3},
+                  "params": [{"name": "countrySelection", "select": {"type": "point","fields": ["properties.GU_A3"]}}],
+                  "encoding": {
+                  "color": {
+                      "field": "pm2022",
+                      "type": "quantitative",
+                      "scale": {
+                      "type": "threshold",
+                      "domain": [10, 20, 30, 40],
+                      "range": ["#ffcc3a", "#ff8700", "#e14800", "#ab0000", "#8d2800"]
+                      },
+                      "legend": {
+                      "title": "2.5PM (µg/m³)",
+                      "orient": "right",
+                      "titleFontSize": 14    
+                      }
+                  },
+                  "opacity": {
+                      "condition": {"param": "countrySelection", "value": 1},
+                      "value": 0.2},
+                  "tooltip": [
+                  {"field": "name", "type": "nominal", "title": "Country"},
+                  {"field": "pm2022", "type": "quantitative", "title": "PM 2.5"}
+                      ]
+                  }            
+              },
+              {
+              "transform": [
+                {
+                  "lookup": "properties.GU_A3",
+                  "from": {
+                    "data": {
+                      "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/2.5PMfileRankedCoordinate.csv"
+                    },
+                    "key": "id",
+                    "fields": ["name", "Latitude", "Longitude"]
+                  }
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "fontSize": 11, 
+                "fontWeight": "bold" 
+              },
+              "encoding": {
+                "longitude": {"field": "Longitude", "type": "quantitative"},
+                "latitude": {"field": "Latitude", "type": "quantitative"},
+                "text": {"field": "name", "type": "nominal"},
+                "opacity": {
+                  "condition": {
+                    "test": "datum['properties.GU_A3'] == 'USA' || datum['properties.GU_A3'] == 'BRA' || datum['properties.GU_A3'] == 'AUS' || datum['properties.GU_A3'] == 'MYS' ||  datum['properties.GU_A3'] == 'RUS' ||  datum['properties.GU_A3'] == 'USA' || datum['properties.GU_A3'] == 'CHN'",
+                    "value": 1
+                  },
+                  "value": 0
+                }
+              }
+            } ,
+            {
+              "data": {
+                "values": [
+                  {"latitude2":-41.5, "longitude2": 75.8, "latitude": 20.26, "longitude": 78.25}
+                ]
+              },
+              "mark": {
+                "type": "rule",
+                "stroke": "black", 
+                "strokeWidth": 2.5
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "longitude"
+                },
+                "latitude": {
+                  "field": "latitude"
+                },
+                "longitude2": {
+                  "field": "longitude2"
+                },
+                "latitude2": {
+                  "field": "latitude2"
+                }
+              }
+            },
+            {
+              "data": {
+                "values": [
+                  {"latitude": -46.37, "longitude": 76.11}
+                ]
+              },
+              "transform": [
+              {
+                "calculate": "split('India have the 2nd highest 2.5pm\\n concentration after Bangladesh', '\\n')",
+                "as": "annotationText"
+              }],
+              "mark": {
+                "type": "text",
+                "color": "black",
+                "fontWeight": "bold",
+                "fontSize": 10,
+                "dx": 5,
+                "dy": -5
+              },
+              "encoding": {
+                "longitude": {"field": "longitude", "type": "quantitative"},
+                "latitude": {"field": "latitude", "type": "quantitative"},
+                "text": {"field": "annotationText"}
+              }
+            },
+            {
+              "data": {
+                "values": [
+                  {"latitude2":41.7, "longitude2": -40.1, "latitude": 71.35, "longitude": -40.35}
+                ]
+              },
+              "mark": {
+                "type": "rule",
+                "stroke": "black", 
+                "strokeWidth": 2.5
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "longitude"
+                },
+                "latitude": {
+                  "field": "latitude"
+                },
+                "longitude2": {
+                  "field": "longitude2"
+                },
+                "latitude2": {
+                  "field": "latitude2"
+                }
+              }
+            },
+            {
+              "data": {
+                "values": [
+                  {"latitude": 38.15, "longitude": -40.15}
+                ]
+              },
+              "transform": [
+              {
+                "calculate": "split('Greenland one of\\n the cleanest country', '\\n')",
+                "as": "annotationText"
+              }],
+              "mark": {
+                "type": "text",
+                "color": "black",
+                "fontWeight": "bold",
+                "fontSize": 10,
+                "dx": 5,
+                "dy": -5
+              },
+              "encoding": {
+                "longitude": {"field": "longitude", "type": "quantitative"},
+                "latitude": {"field": "latitude", "type": "quantitative"},
+                "text": {"field": "annotationText"}
+              }
+            }
+                  
+            ]
+      },
+      {
+          "width": 800,
+          "layer": [
+            {
+              "transform": [
+                {
+                  "lookup": "properties.GU_A3",
+                  "from": {
+                    "data": {
+                      "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/2.5PMfileRankedCoordinate.csv"
+                    },
+                    "key": "id",
+                    "fields": ["name"] 
+                  }
+                },
+                {
+                  "filter": {"param": "countrySelection", "empty": false}
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "fontSize": 24, 
+                "fontWeight": "bold", 
+                "align": "center",
+                "baseline": "middle",
+                "dy": -15  
+              },
+              "encoding": {
+                "text": {
+                  "condition": [
+                    {
+                      "test": "datum.name == null",
+                      "value": "No data for this country" 
+                    },
+                    {
+                      "param": "countrySelection",
+                      "value": {"expr": "'Showing Data for ' + datum.name"}
+                    }
+                  ]                  
+                }
+              }
+            },
+            {
+              "transform": [
+                {
+                  "lookup": "properties.GU_A3",
+                  "from": {
+                    "data": {
+                      "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/2.5PMfileRankedCoordinate.csv"
+                    },
+                    "key": "id",
+                    "fields": ["rank"] 
+                  }
+                },
+                {
+                  "filter": {"param": "countrySelection"}
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "fontSize": 20,
+                "fontWeight": "normal", 
+                "align": "center",
+                "baseline": "middle",
+                "dy": 10 , "stroke": null
+              },
+              "encoding": {
+                "text": {
+                  "condition": {
+                    "param": "countrySelection",
+                    "empty": false,
+                    "value": {"expr": "'Air pollution ranking: ' + floor(datum.rank) + ' out of 245'"}
+                  },
+                  "value": "Please select a country to view data"  
+                 }
+              }
+            },
+            {
+              "transform": [
+                {
+                  "lookup": "properties.GU_A3",
+                  "from": {
+                    "data": {
+                      "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/2.5PMfileRankedCoordinate.csv"
+                    },
+                    "key": "id",
+                    "fields": ["population"] 
+                  }
+                },
+                {
+                  "filter": {"param": "countrySelection"}
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "fontSize": 17,
+                "fontWeight": "normal", 
+                "align": "center",
+                "baseline": "middle",
+                "dy": 35 , "stroke": null
+              },
+              "encoding": {
+                "text": {
+                  "condition": {
+                    "param": "countrySelection",
+                    "empty": false,
+                    "value": {"expr": "'Population: ' + floor(datum.population)"}
+                  },
+                  "value": ""
+                }
+              }
+            }
+
+          ]
+        } ,      
+          {
+              "hconcat": [
+                  {
+                      "title": {
+                          "text": "Change in Green House Gases emission (2000-2022)",
+                          "subtitle": "Data shows emissions in million tons of CO2 equivalent",
+                          "anchor": "start",
+                          "fontSize": 17,
+                          "subtitleFontSize": 14
+                        },
+                      "width": 350,
+                      "height": 200,
+                      "transform": [
+                          {
+                              "lookup": "properties.GU_A3",
+                              "from": {
+                                  "data": {
+                                      "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/GHGchanges.csv"
+                                  },
+                                "key": "id",
+                                "fields": ["CO2","CH4","F-gases","N2O"]
+                              }
+                            },   
+                            {
+                              "fold": ["CO2","CH4","F-gases","N2O"],  
+                              "as": ["Gases", "Change"]
+                          }, 
+                          {"filter": {"param": "countrySelection", "empty": false}}
+                      ],  
+                      "encoding": {
+                          "y": {
+                          "field": "Gases",
+                          "type": "nominal",
+                          "axis": {
+                              "domain": false,
+                              "ticks": false,
+                              "labelAngle": 0,
+                              "labelPadding": 4 ,
+                              "labelFontSize": 13,
+                              "titleFontSize": 15                           
+                            }
+                          },
+                          "x": {
+                          "field": "Change",
+                          "title": "MtCO2e",
+                          "type": "quantitative",
+                          "scale": {"padding": 50, "nice": true},
+                          "axis": {
+                              "gridColor": {
+                              "condition": {"test": "datum.value === 0", "value": "black"},
+                              "value": "#ddd"
+                              },
+                              "labelFontSize": 13,
+                              "titleFontSize": 15  
+                          }},
+                          "color": {
+                              "condition": {
+                                "test": "datum.Change < 0",
+                                "value": "rgb(21, 15, 189)"
+                              },
+                              "value": "rgb(156, 0, 0)" 
+                            },
+                          "tooltip": [
+                          {"field": "Gases", "type": "nominal", "title": "Substance"},
+                          {"field": "Change", "type": "quantitative", "title": "Change (MtCO2eq)", "format": ".2f"}
+                              ]
+                      },
+                      "layer": [
+                          {
+                              "mark": {
+                                  "type": "rule",
+                                  "strokeWidth": 6}
+                          },
+                          {
+                              "mark": {
+                                  "type": "point",
+                                  "filled": true,
+                                  "size": 350,
+                                  "tooltip": true
+                              },
+                              "encoding": {
+                                  "color": {
+                                  "condition": {
+                                  "test": "datum.Change < 0",
+                                  "value": "#0f15bd"
+                                  },
+                                  "value": "rgb(156, 0, 0)" 
+                              },
+                              "x": {
+                                  "field": "Change",
+                                  "type": "quantitative"
+                              },
+                              "y": {
+                                  "field": "Gases",
+                                  "type": "nominal"
+                              }
+                              }
+                          }
+                      ]
+                  },
+                  {
+                      "title": {
+                          "text": "CO2 emission per sector (2000-2022)",
+                          "subtitle": "Data shows emissions in million tons of CO2 equivalent",
+                          "anchor": "start" ,
+                          "fontSize": 17,
+                          "subtitleFontSize": 14
+                      },
+                      "width": 350,
+                      "height": 200,
+                      "transform": [
+                          {
+                              "lookup": "properties.GU_A3",
+                              "from": {
+                                  "data": {
+                                      "url": "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/CO2wideformat.csv"
+                                  },
+                                "key": "id",
+                                "fields": ["Agriculture, 2000", "Agriculture, 2001", "Agriculture, 2002", "Agriculture, 2003", "Agriculture, 2004", "Agriculture, 2005", "Agriculture, 2006", "Agriculture, 2007", "Agriculture, 2008", "Agriculture, 2009", "Agriculture, 2010", "Agriculture, 2011", "Agriculture, 2012", "Agriculture, 2013", "Agriculture, 2014", "Agriculture, 2015", "Agriculture, 2016", "Agriculture, 2017", "Agriculture, 2018", "Agriculture, 2019", "Agriculture, 2020", "Agriculture, 2021", "Agriculture, 2022",
+       "Buildings, 2000", "Buildings, 2001", "Buildings, 2002", "Buildings, 2003", "Buildings, 2004", "Buildings, 2005", "Buildings, 2006", "Buildings, 2007", "Buildings, 2008", "Buildings, 2009", "Buildings, 2010", "Buildings, 2011", "Buildings, 2012", "Buildings, 2013", "Buildings, 2014", "Buildings, 2015", "Buildings, 2016", "Buildings, 2017", "Buildings, 2018", "Buildings, 2019", "Buildings, 2020", "Buildings, 2021", "Buildings, 2022",
+       "Fuel Exploitation, 2000", "Fuel Exploitation, 2001", "Fuel Exploitation, 2002", "Fuel Exploitation, 2003", "Fuel Exploitation, 2004", "Fuel Exploitation, 2005", "Fuel Exploitation, 2006", "Fuel Exploitation, 2007", "Fuel Exploitation, 2008", "Fuel Exploitation, 2009", "Fuel Exploitation, 2010", "Fuel Exploitation, 2011", "Fuel Exploitation, 2012", "Fuel Exploitation, 2013", "Fuel Exploitation, 2014", "Fuel Exploitation, 2015", "Fuel Exploitation, 2016", "Fuel Exploitation, 2017", "Fuel Exploitation, 2018", "Fuel Exploitation, 2019", "Fuel Exploitation, 2020", "Fuel Exploitation, 2021", "Fuel Exploitation, 2022",
+       "Industrial Combustion, 2000", "Industrial Combustion, 2001", "Industrial Combustion, 2002", "Industrial Combustion, 2003", "Industrial Combustion, 2004", "Industrial Combustion, 2005", "Industrial Combustion, 2006", "Industrial Combustion, 2007", "Industrial Combustion, 2008", "Industrial Combustion, 2009", "Industrial Combustion, 2010", "Industrial Combustion, 2011", "Industrial Combustion, 2012", "Industrial Combustion, 2013", "Industrial Combustion, 2014", "Industrial Combustion, 2015", "Industrial Combustion, 2016", "Industrial Combustion, 2017", "Industrial Combustion, 2018", "Industrial Combustion, 2019", "Industrial Combustion, 2020", "Industrial Combustion, 2021", "Industrial Combustion, 2022",
+       "Power Industry, 2000", "Power Industry, 2001", "Power Industry, 2002", "Power Industry, 2003", "Power Industry, 2004", "Power Industry, 2005", "Power Industry, 2006", "Power Industry, 2007", "Power Industry, 2008", "Power Industry, 2009", "Power Industry, 2010", "Power Industry, 2011", "Power Industry, 2012", "Power Industry, 2013", "Power Industry, 2014", "Power Industry, 2015", "Power Industry, 2016", "Power Industry, 2017", "Power Industry, 2018", "Power Industry, 2019", "Power Industry, 2020", "Power Industry, 2021", "Power Industry, 2022",
+       "Processes, 2000", "Processes, 2001", "Processes, 2002", "Processes, 2003", "Processes, 2004", "Processes, 2005", "Processes, 2006", "Processes, 2007", "Processes, 2008", "Processes, 2009", "Processes, 2010", "Processes, 2011", "Processes, 2012", "Processes, 2013", "Processes, 2014", "Processes, 2015", "Processes, 2016", "Processes, 2017", "Processes, 2018", "Processes, 2019", "Processes, 2020", "Processes, 2021", "Processes, 2022",
+       "Transport, 2000", "Transport, 2001", "Transport, 2002", "Transport, 2003", "Transport, 2004", "Transport, 2005", "Transport, 2006", "Transport, 2007", "Transport, 2008", "Transport, 2009", "Transport, 2010", "Transport, 2011", "Transport, 2012", "Transport, 2013", "Transport, 2014", "Transport, 2015", "Transport, 2016", "Transport, 2017", "Transport, 2018", "Transport, 2019", "Transport, 2020", "Transport, 2021", "Transport, 2022",
+       "Waste, 2000", "Waste, 2001", "Waste, 2002", "Waste, 2003", "Waste, 2004", "Waste, 2005", "Waste, 2006", "Waste, 2007", "Waste, 2008", "Waste, 2009", "Waste, 2010", "Waste, 2011", "Waste, 2012", "Waste, 2013", "Waste, 2014", "Waste, 2015", "Waste, 2016", "Waste, 2017", "Waste, 2018", "Waste, 2019", "Waste, 2020", "Waste, 2021", "Waste, 2022"]
+                              }
+                            },   
+                            {
+                              "fold": ["Agriculture, 2000", "Agriculture, 2001", "Agriculture, 2002", "Agriculture, 2003", "Agriculture, 2004", "Agriculture, 2005", "Agriculture, 2006", "Agriculture, 2007", "Agriculture, 2008", "Agriculture, 2009", "Agriculture, 2010", "Agriculture, 2011", "Agriculture, 2012", "Agriculture, 2013", "Agriculture, 2014", "Agriculture, 2015", "Agriculture, 2016", "Agriculture, 2017", "Agriculture, 2018", "Agriculture, 2019", "Agriculture, 2020", "Agriculture, 2021", "Agriculture, 2022",
+       "Buildings, 2000", "Buildings, 2001", "Buildings, 2002", "Buildings, 2003", "Buildings, 2004", "Buildings, 2005", "Buildings, 2006", "Buildings, 2007", "Buildings, 2008", "Buildings, 2009", "Buildings, 2010", "Buildings, 2011", "Buildings, 2012", "Buildings, 2013", "Buildings, 2014", "Buildings, 2015", "Buildings, 2016", "Buildings, 2017", "Buildings, 2018", "Buildings, 2019", "Buildings, 2020", "Buildings, 2021", "Buildings, 2022",
+       "Fuel Exploitation, 2000", "Fuel Exploitation, 2001", "Fuel Exploitation, 2002", "Fuel Exploitation, 2003", "Fuel Exploitation, 2004", "Fuel Exploitation, 2005", "Fuel Exploitation, 2006", "Fuel Exploitation, 2007", "Fuel Exploitation, 2008", "Fuel Exploitation, 2009", "Fuel Exploitation, 2010", "Fuel Exploitation, 2011", "Fuel Exploitation, 2012", "Fuel Exploitation, 2013", "Fuel Exploitation, 2014", "Fuel Exploitation, 2015", "Fuel Exploitation, 2016", "Fuel Exploitation, 2017", "Fuel Exploitation, 2018", "Fuel Exploitation, 2019", "Fuel Exploitation, 2020", "Fuel Exploitation, 2021", "Fuel Exploitation, 2022",
+       "Industrial Combustion, 2000", "Industrial Combustion, 2001", "Industrial Combustion, 2002", "Industrial Combustion, 2003", "Industrial Combustion, 2004", "Industrial Combustion, 2005", "Industrial Combustion, 2006", "Industrial Combustion, 2007", "Industrial Combustion, 2008", "Industrial Combustion, 2009", "Industrial Combustion, 2010", "Industrial Combustion, 2011", "Industrial Combustion, 2012", "Industrial Combustion, 2013", "Industrial Combustion, 2014", "Industrial Combustion, 2015", "Industrial Combustion, 2016", "Industrial Combustion, 2017", "Industrial Combustion, 2018", "Industrial Combustion, 2019", "Industrial Combustion, 2020", "Industrial Combustion, 2021", "Industrial Combustion, 2022",
+       "Power Industry, 2000", "Power Industry, 2001", "Power Industry, 2002", "Power Industry, 2003", "Power Industry, 2004", "Power Industry, 2005", "Power Industry, 2006", "Power Industry, 2007", "Power Industry, 2008", "Power Industry, 2009", "Power Industry, 2010", "Power Industry, 2011", "Power Industry, 2012", "Power Industry, 2013", "Power Industry, 2014", "Power Industry, 2015", "Power Industry, 2016", "Power Industry, 2017", "Power Industry, 2018", "Power Industry, 2019", "Power Industry, 2020", "Power Industry, 2021", "Power Industry, 2022",
+       "Processes, 2000", "Processes, 2001", "Processes, 2002", "Processes, 2003", "Processes, 2004", "Processes, 2005", "Processes, 2006", "Processes, 2007", "Processes, 2008", "Processes, 2009", "Processes, 2010", "Processes, 2011", "Processes, 2012", "Processes, 2013", "Processes, 2014", "Processes, 2015", "Processes, 2016", "Processes, 2017", "Processes, 2018", "Processes, 2019", "Processes, 2020", "Processes, 2021", "Processes, 2022",
+       "Transport, 2000", "Transport, 2001", "Transport, 2002", "Transport, 2003", "Transport, 2004", "Transport, 2005", "Transport, 2006", "Transport, 2007", "Transport, 2008", "Transport, 2009", "Transport, 2010", "Transport, 2011", "Transport, 2012", "Transport, 2013", "Transport, 2014", "Transport, 2015", "Transport, 2016", "Transport, 2017", "Transport, 2018", "Transport, 2019", "Transport, 2020", "Transport, 2021", "Transport, 2022",
+       "Waste, 2000", "Waste, 2001", "Waste, 2002", "Waste, 2003", "Waste, 2004", "Waste, 2005", "Waste, 2006", "Waste, 2007", "Waste, 2008", "Waste, 2009", "Waste, 2010", "Waste, 2011", "Waste, 2012", "Waste, 2013", "Waste, 2014", "Waste, 2015", "Waste, 2016", "Waste, 2017", "Waste, 2018", "Waste, 2019", "Waste, 2020", "Waste, 2021", "Waste, 2022"],  
+                              "as": ["Sector_Year", "Value"]
+                          },
+                          {
+                              "calculate": "split(datum.Sector_Year, ', ')[0]",
+                              "as": "Sector"
+                          },
+                          {
+                              "calculate": "toNumber(split(datum.Sector_Year, ', ')[1])",
+                              "as": "Year"
+                          },    
+                          {"filter": {"param": "countrySelection", "empty": false}}
+                      ],
+                      "layer":[
+                        {
+                          "mark": "area",
+                          "params": [{
+                              "name": "sector",
+                              "select": {"type": "point", "fields": ["Sector"], "on": "mouseover"},
+                              "bind": "legend"
+                            }],
+                          "encoding": {
+                            "x": {
+                              "field": "Year",
+                              "type": "ordinal",
+                              "axis": {
+                                "domain": false,
+                                "tickSize": 0,
+                                "title": "Year",
+                                "values": [2000,2002,2004,2006,2008,2010,2012,2014,2016,2018,2020,2022] ,
+                                "labelAngle" : -45,
+                                "labelFontSize": 13,
+                                "titleFontSize": 15 
+                              }
+                            },
+                            "y": {
+                              "aggregate": "sum",
+                              "field": "Value",
+                              "axis": null,
+                              "stack": "center",
+                              "scale": {"padding": 10}
+                            },
+                            "color": {
+                              "field": "Sector", 
+                              "scale": {
+                                "range": ["#4047d3", "#fee251", "#ffc125", "#80c9e8", "#9880e8", "#ffddbf", "#fe5151", "#ffbff0"]
+                              },
+                              "legend": {
+                                "labelFontSize": 13,
+                                "titleFontSize": 14                          
+                              }
+                            },                     
+                          "opacity": {
+                          "condition": {"param": "sector", "value": 1},
+                          "value": 0.2},
+                            "tooltip": [
+                              {"field": "Sector", "type": "nominal", "title": "Sector"},
+                              {"field": "Year", "type": "ordinal", "title": "Year"},
+                              {"field": "Value", "type": "quantitative", "title": "CO2 emission (MtCO2eq)", "format": ".2f"}
+                            ]
+                          }
+                        },
+                        {
+                          "mark": {
+                            "type": "rule",
+                            "color": "darkgray",
+                            "strokeWidth": 2
+                          },
+                          "encoding": {
+                            "x": {
+                              "datum": 2020,
+                              "type": "ordinal"
+                          }
+                        }
+                      },
+                        {
+                          "mark": {
+                            "type": "text",
+                            "align": "left",
+                            "dx": 5,
+                            "dy": -89,
+                            "color": "red",
+                            "fontWeight":"lighter", 
+                            "fontSize":13,
+                            "font": "Arial"
+                          },
+                          "encoding": {
+                            "x": {
+                              "datum": 2020,
+                              "type": "ordinal"
+                            },
+                            "text": {"value": "Pandemic"}
+                          }
+                        }    
+                      ]
+
+                  }
+              ], 
+              "spacing": 50
+          }
+          
+      
+  ],
+  "spacing": 30 ,
+  "config": {
+    "concat": {
+    "spacing": 20  
+  },
+  "mark": {
+    "font": "Arial"
+  },
+  "background": "rgba(0, 0, 0, 0)"
+}
+}
+  

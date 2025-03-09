@@ -1,0 +1,122 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "autosize": {"resize": true},
+    "background": "transparent",
+    "description": "A simple donut chart with embedded data.",
+    "params": [
+        {
+        "name": "yearSelection",
+        "value": 2000,
+        "bind": {
+        "input": "range",
+        "min": 2000,
+        "max": 2019,
+        "step": 1,
+        "name": "Year: "
+        }
+        }
+    ],
+    "vconcat":[{
+        "data": {
+            "url":
+            "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/GlobalGHGEmission.csv"
+            },
+        "transform": [
+            {
+                "filter": "datum.Year == yearSelection"
+            }
+          ],
+            "mark": {
+              "type": "text",
+              "fontSize": 21, 
+              "fontWeight": "normal", 
+              "align": "center",
+              "dx": 90,
+              "font": "Arial"
+            },
+            "encoding": {
+              "text": {
+                "condition": {
+                  "param": "yearSelection",
+                  "empty": false,
+                  "value": {"expr": "'Global Death by Cause in year ' + datum.Year"}
+                }
+             }
+            }
+      }, 
+    {
+    "hconcat": [
+        {
+            "data": {
+                "url":
+                "https://raw.githubusercontent.com/elke0001/FIT3179_Assignment2/refs/heads/main/Data/CausesOfDeaths.csv"
+                },
+            "transform": [
+                {
+                    "filter": "datum.Year == yearSelection"
+                },
+                {
+                  "window": [
+                    {"op": "sum", "field": "Value", "as": "TotalValue"}
+                  ],
+                  "frame": [null, null]
+                },
+                {
+                  "calculate": "datum.Value / datum.TotalValue * 100",
+                  "as": "Percent"
+                },
+                {
+                  "calculate": "round(datum.Percent) + '%' ",
+                  "as": "PercentLabel"
+                }
+              ],
+            "layer":[
+            {            
+            "mark": {"type": "arc", "radius": 140, "innerRadius": 80},
+            "encoding": {
+                "theta": {"field": "Value", "type": "quantitative"},
+                "color": {
+                    "field": "Causes",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": ["Air Pollution", "Others"], 
+                        "range": ["rgb(156, 0, 0)", "#e2e2e2"] 
+                    },
+                    "legend": {
+                        "title": "Causes of Death",
+                        "orient": "top-left" ,
+                        "offset": -90,
+                        "labelFontSize": 14,
+                        "titleFontSize": 16
+                    }
+                },
+                "tooltip": [
+                  {"field": "Causes", "type": "nominal", "title": "Cause"},
+                  {"field": "PercentLabel", "type": "nominal", "title": "Percentage"},
+                  {"field": "Value", "type": "quantitative", "title": "Number of Death", "format": ",.0f"}
+                ]
+              }
+            },
+            {
+                "mark": {"type": "text",
+                "fontSize": 20, 
+                "fontWeight": "bold"},
+                "encoding": {
+                  "text": {"field": "PercentLabel", "type": "nominal"},
+                  "theta": {"field": "Value", "type": "quantitative", "stack": true},
+                  "radius": {"value": 165},
+                  "color": {"value": "black"}
+                }
+              }
+            
+        ]
+    }
+    ],
+    "spacing": 30,
+    "resolve": {
+        "scale": {
+          "color": "independent" 
+        }
+  }}
+  ]
+  }
